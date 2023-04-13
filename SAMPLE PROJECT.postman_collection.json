@@ -1,0 +1,377 @@
+{
+	"info": {
+		"_postman_id": "f41b1728-5e09-4130-913f-5de32e60718a",
+		"name": "SAMPLE PROJECT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TEMPLATES",
+			"item": [
+				{
+					"name": "GET ALL TEMPLATES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/api/templates",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET TEMPLATE BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/api/templates/6436172d86bac760fcd99e46",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"templates",
+								"6436172d86bac760fcd99e46"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE TEMPLATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Email Template 3\",\r\n    \"header\":\"<h1> Email Header </h1>\",\r\n    \"body\" :  \"<p> This is the email body </p>\",\r\n    \"cssFile\" : \".p { length :20px; width:20px}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/templates/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"templates",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE TEMPLATE",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Email Template 2\",\r\n    \"header\":\"<h1> Email Not Header </h1>\",\r\n    \"body\" :  \"<p> This is the email body </p>\",\r\n    \"cssFile\" : \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/templates/642d19bab45f3da8a33dace2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"templates",
+								"642d19bab45f3da8a33dace2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEND TEMPLATE TO EMAIL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/api/templates/send/642d19bab45f3da8a33dace2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"templates",
+								"send",
+								"642d19bab45f3da8a33dace2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USERS",
+			"item": [
+				{
+					"name": "LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"testingUpdated@email.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHECK OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"testingUpdated@email.com\",\r\n    \"OTP\" : \"1111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/users/check",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"users",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHANGE NAME",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjgxMzY2MTQzLCJleHAiOjE2ODEzNjk3NDN9.kymk8FCbutbK1wXyW_kqj9X3i0LI-wbD7VogzlXpOkA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"testingUpdated\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/users/name",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"users",
+								"name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHANGE EMAIL",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwiaWF0IjoxNjgxMzY2MTQzLCJleHAiOjE2ODEzNjk3NDN9.kymk8FCbutbK1wXyW_kqj9X3i0LI-wbD7VogzlXpOkA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"updatedEmail\" : \"testingUpdated@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/users/email",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"users",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHANGE PASSWORD",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RpbmdVcGRhdGVkQGVtYWlsLmNvbSIsImlhdCI6MTY4MTM2Njc0OCwiZXhwIjoxNjgxMzcwMzQ4fQ.ThsixtecIeaXRnD9W2P4LPD1PnA2KtjPHFPQIcBGFgM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\" : \"1234updated\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/users/password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHANGE PHONE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RpbmdVcGRhdGVkQGVtYWlsLmNvbSIsImlhdCI6MTY4MTM2Njc0OCwiZXhwIjoxNjgxMzcwMzQ4fQ.ThsixtecIeaXRnD9W2P4LPD1PnA2KtjPHFPQIcBGFgM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\" : \"87654321updated\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/users/phone",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"users",
+								"phone"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": ""
+		}
+	]
+}

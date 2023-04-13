@@ -1,5 +1,4 @@
 const Templates = require("../models/templates");
-const nodemailer = require("nodemailer");
 const sendEmail = require("../utils/sendEmail");
 require("dotenv").config();
 
@@ -73,9 +72,14 @@ module.exports = {
 		try {
 			const { id } = req.params;
 			const template = await Templates.findById(id);
-			await sendEmail("justkenndy92@gmail.com", "hello", template);
-			return res.status(200).jspon({ message: `Succesfully sent email` });
+			await sendEmail(
+				"justkenndy92@gmail.com",
+				"Sample Project Email Template",
+				JSON.stringify(template)
+			);
+			return res.status(200).json({ message: `Succesfully sent email` });
 		} catch (error) {
+			console.log(error);
 			return res.status(500).json({ message: error });
 		}
 	},
