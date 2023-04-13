@@ -1,7 +1,7 @@
 const Users = require("../models/users");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const OTP_CODE = "1111";
+const OTP_CODE = "11111";
 
 module.exports = {
 	login: async (req, res) => {
@@ -73,13 +73,11 @@ module.exports = {
 			const token = jwt.sign({ email: updatedEmail }, "secret_passphrase", {
 				expiresIn: "1h",
 			});
-			return res
-				.status(200)
-				.json({
-					message: "User succesfully updated",
-					newToken: token,
-					updatedUser,
-				});
+			return res.status(200).json({
+				message: "User succesfully updated",
+				newToken: token,
+				updatedUser,
+			});
 		} catch (error) {
 			console.log(error);
 			return res.status(500).json({ message: error });
