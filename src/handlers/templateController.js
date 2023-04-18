@@ -1,11 +1,10 @@
-const Templates = require("../models/templates");
 const sendEmail = require("../utils/sendEmail");
 require("dotenv").config();
 
 module.exports = {
-	list: async (_, res) => {
+	list: (templateService) => async (_, res) => {
 		try {
-			const templates = await Templates.find();
+			const templates = await templateService.list();
 			return res
 				.status(200)
 				.json({ message: "Succesfully retrieved templats", templates });
@@ -14,56 +13,47 @@ module.exports = {
 		}
 	},
 
-	get: async (req, res) => {
+	getTemplatesByUser: (templateService) => async (_, res) => {
 		try {
-			const { id } = req.params;
-			const template = await Templates.findById(id);
-
+			const id = res.user.id;
+			const templates = await templateService.getTemplatesByUser(id);
 			return res
 				.status(200)
-				.json({ message: `Succesfully retrieved document ${id}`, template });
-		} catch (error) {
-			return res.status(500).json({ message: error });
-		}
-	},
-
-	create: async (req, res) => {
-		try {
-			const { name, header, body, cssFile } = req.body;
-			const createTemplate = await Templates.create({
-				name,
-				header,
-				body,
-				cssFile,
-			});
-			return res
-				.status(200)
-				.json({ message: "Succesfully created template", createTemplate });
+				.json({ message: "Succesfully retrieved templates", templates });
 		} catch (error) {
 			console.log(error);
 			return res.status(500).json({ message: error });
 		}
 	},
 
-	edit: async (req, res) => {
+	create: (templateService) => async (req, res) => {
+		try {
+			const id = res.user.id;
+			const data = await templateService.createTemplate({
+				id,
+				...req.body,
+			});
+			return res
+				.status(200)
+				.json({ message: "Succesfully created template", data });
+		} catch (error) {
+			console.log(error);
+			return res.status(500).json({ message: error });
+		}
+	},
+
+	edit: (templateService) => async (req, res) => {
 		try {
 			const { id } = req.params;
-			const template = await Templates.findById(id);
-			const updateBody = {
-				name: req.body.name || template.name,
-				header: req.body.header || template.header,
-				body: req.body.body || template.body,
-				cssFile: req.body.cssFile || template.cssFile,
-			};
-
-			const updateTemplate = await Templates.findByIdAndUpdate(id, updateBody, {
-				new: true,
+			const data = await templateService.updateTemplate({
+				id,
+				...req.body,
 			});
-			return res.status(200).json({
-				message: `Succesfully updated document ${id}`,
-				updateTemplate,
-			});
+			return res
+				.status(200)
+				.json({ message: "Succesfully updated Template", data });
 		} catch (error) {
+			console.log(error);
 			return res.status(500).json({ message: error });
 		}
 	},
