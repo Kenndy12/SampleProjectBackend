@@ -84,7 +84,7 @@ paths:
                 body:
                   type: React Editor Object
                   example: body: "This is a react editor object"
-      response:
+      responses:
         "200":
           description: Succesfully updated template
           content:
@@ -119,7 +119,7 @@ paths:
                 header:
                   type: String
                   example: This is an email header
-      response:
+      responses:
         "200":
           description: Succesfully sent the template
           content:
@@ -135,7 +135,204 @@ paths:
               schema: array
               items:
                 type: string
-
+  /login:
+    post:
+      tags:
+        - User
+      summary: Login a user with email and password
+      requestBody:
+        description: Logs in a user with the correct email and password
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+                  example: example@email.com
+                password:
+                  type: string
+                  example: password123
+      responses:
+        "200":
+          description: Succesfully logged in the user
+        "500":
+          description: An error has occured
+  /check:
+    post:
+      tags:
+        - User
+      summary: Checks the provided OTP to see if its the correct OTP
+      requestBody:
+        description: Validates the provided OTP
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: string
+                  example: 6213838dsa8d1
+                otp:
+                  type: string
+                  example: "11111"
+      responses:
+        "200":
+          description: OTP Checks succeeds and returns a JWT Token
+          content: 
+            application/json:
+              schema:
+                properties:
+                  token:
+                    type: String
+                    example: d87sa6d87sadsakcxmksaoicxsa7d8sa89
+        "500":
+          description: An error has occured
+  /profile:
+    get:
+      tags:
+        - User
+      summary: Gets the user profile with the saved JWT token
+      description: Gets the profile of the user with the saved JWT token, only works if the user is logged in
+      responses:
+        "200":
+          description: Succesfully got the user profile
+          content:
+            application/json:
+              schema:
+                properties:
+                  _id:
+                    type: string
+                    example: 6213838dsa8d1
+                  name: 
+                    type: String
+                    example: John Smith
+                  email:
+                    type: String
+                    example: John@email.com
+                  phone:
+                    type: String
+                    example: "87654321"
+        "500":
+          description: An error has occured
+  /name:
+    patch:
+      tags:
+        - User
+      summary: Updates the user's name
+      description: Updates the user's name, only works if the user is logged in
+      requestBody:
+        description: Needs name attribute
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: String
+                  example: Will Smith
+      responses:
+        "200":
+          description: Succesfully updated the user's name
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: 
+                    type: string
+                    example: User succesfully updated
+                  updatedUser:
+                    type: JSON
+                    example: {"name":"UpdatedUser", "email":"user@email.com","phone":"7654321"}
+        "500":
+          description: An error has occured
+  /email:
+    patch:
+      tags:
+        - User
+      summary: Updates the user's email
+      description: Updates the user's email, only works if the user is logged in
+      requestBody:
+        description: Needs email attribute
+        content:
+          application/json:
+            schema:
+              properties:
+                updatedEmail:
+                  type: String
+                  example: John321@email.com
+      responses:
+        "200":
+          description: Succesfully updated the user's email
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: 
+                    type: string
+                    example: User succesfully updated
+                  updatedUser:
+                    type: JSON
+                    example: {"name":"User", "email":"John321@email.com","phone":"7654321"}
+        "500":
+          description: An error has occured
+  /phone:
+    patch:
+      tags:
+        - User
+      summary: Updates the user's phone number
+      description: Updates the user's phone number, only works if the user is logged in
+      requestBody:
+        description: Needs phone number attribute
+        content:
+          application/json:
+            schema:
+              properties:
+                phone:
+                  type: String
+                  example: "12334567"
+      responses:
+        "200":
+          description: Succesfully updated the user's phone number
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: 
+                    type: string
+                    example: User succesfully updated
+                  updatedUser:
+                    type: JSON
+                    example: {"name":"User", "email":"user@email.com","phone":"1234567"}
+        "500":
+          description: An error has occured
+  /password:
+    patch:
+      tags:
+        - User
+      summary: Updates the user's password
+      description: Updates the user's password, only works if the user is logged in
+      requestBody:
+        description: Needs password attribute
+        content:
+          application/json:
+            schema:
+              properties:
+                password:
+                  type: String
+                  example: "thisisupdatedpassword"
+      responses:
+        "200":
+          description: Succesfully updated the user's password
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: 
+                    type: string
+                    example: User succesfully updated
+                  updatedUser:
+                    type: JSON
+                    example: {"name":"user", "email":"user@email.com","phone":"7654321"}
+        "500":
+          description: An error has occured
 components:
   schemas:
     template:
