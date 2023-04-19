@@ -1,0 +1,151 @@
+openapi: 3.0.0
+info:
+  title: Sample Project
+  description: A project designed to be able to customize and send email templates.
+  version: 0.1.0
+servers:
+  - url: http://localhost:8000/v1/api
+    description: Base API Url
+paths:
+  /templates:
+    get:
+      tags:
+        - Templates
+      summary: Returns a list of all the templates.
+      responses:
+        "200":
+          description: A JSON array of all the templates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: Object
+        "500":
+          description: An error has occured
+  /templates/getByUser:
+    get:
+      tags:
+        - Templates
+      summary: Returns a list of templates created by the logged in user
+      description: - Returns a list of templates created by the user, user must be logged in because API uses
+        the authorization token to get identity of user
+      responses:
+        "200":
+          description: A JSON array of all the templates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: Object
+        "500":
+          description: An error has occured
+  /templates/create :
+    post:
+      tags:
+        - Templates
+      summary: Creates a template 
+      requestBody:
+        description: Create a template
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/template'
+      responses:
+        "200":
+          description: Successfully created the template
+          content: 
+            application/json:
+              schema:
+                type: array
+                items: 
+                  type: String
+        "500":
+          description: An error has occured
+  /templates/{id}:
+    patch:
+      tags:
+        - Templates
+      parameters:
+        - name: id
+          in: path
+          description: Id of the template
+          required: true
+          schema:
+            type: String
+      summary: Edit a template
+      requestBody:
+        description: Update a template
+        content: 
+          application/json:
+            schema:
+              properties:
+                body:
+                  type: React Editor Object
+                  example: body: "This is a react editor object"
+      response:
+        "200":
+          description: Succesfully updated template
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: String
+        "500":
+          description: An error has occured
+  /send/{id}:
+    post:
+      tags: 
+        - Templates
+      parameters:
+        - name: id
+          in: path
+          description: Id of the template
+          required: true
+          schema:
+            type: String
+      summary: Send the template email to email of your choice
+      requestBody:
+        description: Send an email of the template
+        content:
+          application/json:
+            schema:
+              properties:
+                destinationEmail:
+                  type: String
+                  example: example@email.com
+                header:
+                  type: String
+                  example: This is an email header
+      response:
+        "200":
+          description: Succesfully sent the template
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        "500":
+          description: An error has occured
+          content:
+            application/json:
+              schema: array
+              items:
+                type: string
+
+components:
+  schemas:
+    template:
+      properties:
+        name:
+          type: String
+          example: This is an email name
+        body:
+          type: React Editor Object
+          example: body: "This is react editor object"
+        cssFile: 
+          type: String
+          example: "h1 {padding: 10px}"

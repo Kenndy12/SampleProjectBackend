@@ -4,7 +4,9 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const userRouter = require("./routes/users");
 const templateRouter = require("./routes/templates");
-
+const swaggerUi = require("swagger-ui-express");
+const YAML = require("yamljs");
+const swaggerDocument = YAML.load("./swagger.yaml");
 const templateService = require("./service/templateService");
 require("dotenv").config();
 
@@ -13,6 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/v1/api/users", userRouter);
 app.use("/v1/api/templates", templateRouter(templateService));
 app.get("*", (_, res) => {

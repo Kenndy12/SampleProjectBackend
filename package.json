@@ -22,6 +22,7 @@
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.22",
     "supertest": "^6.3.3",
-    "swagger-ui": "^4.18.2"
+    "swagger-ui-express": "^4.6.2",
+    "yamljs": "^0.3.0"
   }
 }
