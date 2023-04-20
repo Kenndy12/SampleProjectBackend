@@ -1,5 +1,5 @@
 const Templates = require("../database/models/templates");
-
+const sendEmail = require("../utils/sendEmail");
 module.exports = {
 	list: async () => {
 		try {
@@ -50,5 +50,12 @@ module.exports = {
 		} catch (error) {
 			throw new Error(error.message);
 		}
+	},
+
+	sendEmail: async (payload) => {
+		try {
+			const { id, sender, receiver, header, body } = payload;
+			await sendEmail(sender, receiver, header, JSON.stringify(template));
+		} catch (error) {}
 	},
 };

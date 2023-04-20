@@ -1,4 +1,3 @@
-const sendEmail = require("../utils/sendEmail");
 require("dotenv").config();
 
 module.exports = {
@@ -58,16 +57,12 @@ module.exports = {
 		}
 	},
 
-	sendEmail: async (req, res) => {
+	sendEmail: (templateService) => async (req, res) => {
 		try {
-			const { id } = req.params;
-			const template = await Templates.findById(id);
-			await sendEmail(
-				"justkenndy92@gmail.com",
-				"Sample Project Email Template",
-				JSON.stringify(template)
-			);
-			return res.status(200).json({ message: `Succesfully sent email` });
+			const template = await templateService.sendEmail({ id, ...req.body });
+			return res
+				.status(200)
+				.json({ message: `Succesfully sent email`, template });
 		} catch (error) {
 			console.log(error);
 			return res.status(500).json({ message: error });
