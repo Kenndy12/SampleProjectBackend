@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check registered event handers On connected 1`] = `
+[
+  [
+    "DB Connected",
+  ],
+]
+`;
+
+exports[`Check registered event handers on reconnected 1`] = `
+[
+  [
+    "DB Reconnected",
+  ],
+]
+`;

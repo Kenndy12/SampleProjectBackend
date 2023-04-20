@@ -6,6 +6,7 @@ const openMongoConnection = async () => {
 		.connect(process.env.connection_url, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
+			dbName: process.env.db_name,
 		})
 		.catch((e) => {
 			console.info(`Failed to establish MongoDB Connection, ${e}`);
