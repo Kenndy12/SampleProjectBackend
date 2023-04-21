@@ -20,7 +20,6 @@ module.exports = {
 				.status(200)
 				.json({ message: "Succesfully retrieved templates", templates });
 		} catch (error) {
-			console.log(error);
 			return res.status(500).json({ message: error });
 		}
 	},
@@ -59,10 +58,10 @@ module.exports = {
 
 	sendEmail: (templateService) => async (req, res) => {
 		try {
-			const template = await templateService.sendEmail({ id, ...req.body });
+			const sentStatus = await templateService.sendEmail({ ...req.body });
 			return res
 				.status(200)
-				.json({ message: `Succesfully sent email`, template });
+				.json({ message: `Successfully sent email`, sentStatus });
 		} catch (error) {
 			console.log(error);
 			return res.status(500).json({ message: error });

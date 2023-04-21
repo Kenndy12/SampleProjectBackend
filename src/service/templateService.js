@@ -22,6 +22,15 @@ module.exports = {
 		}
 	},
 
+	getTemplateById: async (id) => {
+		try {
+			const template = await Templates.findById(id);
+			return { template };
+		} catch (error) {
+			throw new Error(error.message);
+		}
+	},
+
 	createTemplate: async (payload) => {
 		try {
 			const { id, name, body, cssFile } = payload;
@@ -54,8 +63,11 @@ module.exports = {
 
 	sendEmail: async (payload) => {
 		try {
-			const { id, sender, receiver, header, body } = payload;
-			await sendEmail(sender, receiver, header, JSON.stringify(template));
-		} catch (error) {}
+			const { sender, receiver, header, body } = payload;
+			await sendEmail(sender, receiver, header, JSON.stringify(body));
+			return true;
+		} catch (error) {
+			throw new Error(error.message);
+		}
 	},
 };
