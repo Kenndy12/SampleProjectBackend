@@ -1,0 +1,428 @@
+{
+	"info": {
+		"_postman_id": "f41b1728-5e09-4130-913f-5de32e60718a",
+		"name": "SAMPLE PROJECT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26266452"
+	},
+	"item": [
+		{
+			"name": "TEMPLATES",
+			"item": [
+				{
+					"name": "GET ALL TEMPLATES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/api/templates",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET TEMPLATES BY USER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzc4NTI0ZWJhZTdkNzQ0YTVhY2Q3YSIsImlhdCI6MTY4MTgwMzMxMSwiZXhwIjoxNjgxODA2OTExfQ.mA8TStzBxXdsG8W0aCIl87niwKtw5A4sE_o6QtA6uzs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/api/templates/getByUser",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"templates",
+								"getByUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE TEMPLATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzc4NTI0ZWJhZTdkNzQ0YTVhY2Q3YSIsImlhdCI6MTY4MTgwMzMxMSwiZXhwIjoxNjgxODA2OTExfQ.mA8TStzBxXdsG8W0aCIl87niwKtw5A4sE_o6QtA6uzs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"This belongs to kenndy user 3halohalo31\",\r\n    \"header\":\"<h1> Email Header </h1>\",\r\n    \"body\" : {\r\n        \"id\": \"2\",\r\n        \"test\":\"dsadsadsa\"\r\n\r\n    },\r\n    \"cssFile\" : \".p { length :20px; width:20px}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/templates/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"templates",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE TEMPLATE",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"This is kenndy UPDATEDDD\",\r\n    \"body\" :  \"<p> This is the email body  UPDATEDDD</p>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/templates/643e513e4ccc9ab46f0a69f5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"templates",
+								"643e513e4ccc9ab46f0a69f5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SEND TEMPLATE TO EMAIL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/api/templates/send/642d19bab45f3da8a33dace2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"templates",
+								"send",
+								"642d19bab45f3da8a33dace2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USERS",
+			"item": [
+				{
+					"name": "LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"Kenndy@email.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHECK OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"64378524ebae7d744a5acd7a\",\r\n    \"OTP\" : \"11111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/users/check",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"users",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET PROFILE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzc4NTI0ZWJhZTdkNzQ0YTVhY2Q3YSIsImlhdCI6MTY4MTc5MTQxMywiZXhwIjoxNjgxNzk1MDEzfQ.JGSn6DlFmhmwljavo3ipG48wR9YMCYDxGz1QDeRB8GU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/v1/api/users/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHANGE NAME",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzc4NTI0ZWJhZTdkNzQ0YTVhY2Q3YSIsImlhdCI6MTY4MTc5MTQxMywiZXhwIjoxNjgxNzk1MDEzfQ.JGSn6DlFmhmwljavo3ipG48wR9YMCYDxGz1QDeRB8GU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Kenndy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/users/name",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"users",
+								"name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHANGE EMAIL",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzc4NTI0ZWJhZTdkNzQ0YTVhY2Q3YSIsImlhdCI6MTY4MTc5MTQxMywiZXhwIjoxNjgxNzk1MDEzfQ.JGSn6DlFmhmwljavo3ipG48wR9YMCYDxGz1QDeRB8GU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"updatedEmail\" : \"Kenndy@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/users/email",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"users",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHANGE PASSWORD",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzc4NTI0ZWJhZTdkNzQ0YTVhY2Q3YSIsImlhdCI6MTY4MTc5MTQxMywiZXhwIjoxNjgxNzk1MDEzfQ.JGSn6DlFmhmwljavo3ipG48wR9YMCYDxGz1QDeRB8GU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\" : \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/users/password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHANGE PHONE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzc4NTI0ZWJhZTdkNzQ0YTVhY2Q3YSIsImlhdCI6MTY4MTc5MTQxMywiZXhwIjoxNjgxNzk1MDEzfQ.JGSn6DlFmhmwljavo3ipG48wR9YMCYDxGz1QDeRB8GU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\" : \"87654321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/api/users/phone",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"users",
+								"phone"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": ""
+		}
+	]
+}
