@@ -8,6 +8,7 @@ const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
 const swaggerDocument = YAML.load("./swagger.yaml");
 const templateService = require("./service/templateService");
+const userService = require("./service/userService");
 require("dotenv").config();
 
 const app = express();
@@ -16,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use("/v1/api/users", userRouter);
+app.use("/v1/api/users", userRouter(userService));
 app.use("/v1/api/templates", templateRouter(templateService));
 app.get("*", (_, res) => {
 	res.status(404).json({ message: "You are at the wrong place" });

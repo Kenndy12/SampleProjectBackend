@@ -1,13 +1,20 @@
 const express = require("express");
-const controller = require("../handlers/userController");
+const controller = require("../handlers/userHandler");
 const verifyToken = require("../handlers/middleware/verifyToken");
 const router = express.Router();
 
-router.post("/login", controller.login);
-router.post("/check", controller.checkOTP);
-router.get("/profile", verifyToken, controller.getProfile);
-router.patch("/name", verifyToken, controller.changeName);
-router.patch("/email", verifyToken, controller.changeEmail);
-router.patch("/password", verifyToken, controller.changePassword);
-router.patch("/phone", verifyToken, controller.changePhone);
-module.exports = router;
+module.exports = (userService) => {
+	router.post("/login", controller.login(userService));
+	router.post("/check", controller.checkOTP(userService));
+	router.get("/profile", verifyToken, controller.getProfile(userService));
+	router.patch("/name", verifyToken, controller.changeName(userService));
+	router.patch("/email", verifyToken, controller.changeEmail(userService));
+	router.patch(
+		"/password",
+		verifyToken,
+		controller.changePassword(userService)
+	);
+	router.patch("/phone", verifyToken, controller.changePhone(userService));
+
+	return router;
+};
