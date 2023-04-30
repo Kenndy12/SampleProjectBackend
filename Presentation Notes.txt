@@ -1,0 +1,41 @@
+Slide 1
+
+Good morning/afternoon everyone, today im going to present and speak about backend of side
+of my sample project
+
+Slide 2
+So to make things more digestable, i have seperated the contents that we're going to discuss today
+into 6 different sections, First we have introduction, to briefly introduce what the project is about
+we have backend expectations, to explain what is expected of the backend, next we have the folder structure 
+and folder breakdown, where we try to explain what each folder's purpose is for, and finally we have the backend flow
+which simulates an API call to the backend server
+
+Slide 3
+So in this sample project, what we're aiming to build is a web and mobile application, that lets user
+design email templates for them, this project will let users send personalized, unique and beautiful emails with ease.
+In terms of the backend side, we are building this app with Node Express and we're also using MongoDB as the database
+to store our user's templates.
+
+Slide 4
+Now lets talk about the backend side more, in terms of expectations it can be summarized as such,
+for users they should be able to log in, check if the otp is correct or not, get, and update their user profile
+for the templates, they should be able to be saved, to be retrieved, to be updated and to be sent as an email
+
+Slide 5
+Here are the API endpoints, since there's quite a bit im not going to out of my way to further explain these,
+but if you're interested to know more, you can go to "{url}/v1/api-docs" which is the swagger endpoint to see more 
+details
+
+Slide 6
+Folder structures, now on there are 3 folders that I would like to first explain, deploy, src, and script
+deploy as it's name suggest is used for deploying the application, as well as any CI/CD related things,
+script is for any script files in the case of this project, there is a script to generate a pair of public/private keys
+and finally src is where the main codes of the program is located.
+
+Slide 7
+As you can see, there are a lot of subfolders in the src folder, in the next few slides, I will go through
+each folder and explain to you what the purposes of each folder are
+
+Slide 8
+
+
