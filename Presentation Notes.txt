@@ -37,5 +37,62 @@ As you can see, there are a lot of subfolders in the src folder, in the next few
 each folder and explain to you what the purposes of each folder are
 
 Slide 8
+-
+
+Slide 9
+So inside the test folder, we have test files, however instead of clumping all the test files together the test folders
+are actually seperated based on what their testing, so the test folder in src will test for the index.js, while the test folder
+that tests for the database connection will be under the connection folder.
+
+Slide 10
+So under the database folder, aside from the test folder that we've already gone through, we have the a sub folder called models
+and a conectionHandler.js file, under the models subfolder, you can actually see the templates and user file.
+
+Slide 11
+As you can see here, the templates file under the models subfolder is actually the mongoose schema file for the templates object, 
+as for the connectionHandler file it is actually the file responsible for establishing the connection to our database.
+
+Slide 12
+Now as for the models folder, this folder is actually reponsible for data verification and validation, the files under the models
+folder are actually the middleware that will be called on the route, whereas the files under the schema subfolder are the
+actual data validation using JOI.
+
+Slide 13
+The networks folder has a subfolder called apis which has a file called index.js, the network folder is responsible
+for any API calls that are called to outside of the network or application
+
+Slide 14
+
+Slide 15
+Next, the routes folder is responsible for routing API calls to their respective middleware and handlers, for example if an
+"/create" endpoint with post method were to be called, the route file will determine which middleware and handler to be called
+in this case it will call the {MIDDLEWARE} and after that the {HANDLER} handler.
+
+Slide 16
+Now, for the handler folder aside from the handler files, we also have the helpers and middlewares subfolder, the helpers
+folder mainly contains helper functions for the handlers, in the case of this project we have a response.js file which helps us
+send the response back, the middleware folder contains middlewares, in the case for this project we have an auth.js file 
+to help us check the authentication of the user and retrieve their JWT token. Inside the handler files, it is important to know
+that we only call the service function, and return the response here, all the logic is done inside the service funtion.
+
+Slide 17
+Next, the service folder, the service folder is where all the logic of creating, retrieving, updating and deleting are stored.
+This folder contains all the function which interacts with the database, they call the moongoose schema model to interact with 
+the data.
+
+Slide 18
+Lastly, the utils folder, this folder contains all the utlity functions, these are typically functions that are small and 
+are designed to do a specific task, for example it could be a function to parse strings, or in the case of this project a function
+that contains constants, a function taht encrypts and decrypts data, and a helper function
+
+Slide 19
+So now i will briefly explain the flow of the backend side, First we type in npm run dev to start the backend server, once
+an API call is made, the program will check on index.js file to see which route is responsible for the API call, it thens
+uses that route, in this example case, let's pretend the "/getByUser" endpoint was called, in this case the program will
+call {WORK IN PROGRESS INSERT MIDDLEWARE NAME HERE} middleware after all the middleware is called and succesfully passed, 
+the {INSERT HANDLER HERE} handler will be called, the handler will then call the {INSERT SERVICE NAME HERE} service
+to do the logic, and will return the result to the handler, the handler will then return the final result to the frontend.
+
+
 
 
