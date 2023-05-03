@@ -5,7 +5,7 @@ of my sample project
 
 Slide 2
 So to make things more digestable, i have seperated the contents that we're going to discuss today
-into 6 different sections, First we have introduction, to briefly introduce what the project is about
+into 5 different sections, First we have introduction, to briefly introduce what the project is about
 we have backend expectations, to explain what is expected of the backend, next we have the folder structure 
 and folder breakdown, where we try to explain what each folder's purpose is for, and finally we have the backend flow
 which simulates an API call to the backend server
@@ -62,11 +62,12 @@ The networks folder has a subfolder called apis which has a file called index.js
 for any API calls that are called to outside of the network or application
 
 Slide 14
+Contains an error.js file for an InstanceNotFoundError, this is called when we want to check an instance error
 
 Slide 15
 Next, the routes folder is responsible for routing API calls to their respective middleware and handlers, for example if an
-"/create" endpoint with post method were to be called, the route file will determine which middleware and handler to be called
-in this case it will call the {MIDDLEWARE} and after that the {HANDLER} handler.
+"/createTemplate" endpoint with post method were to be called, the route file will determine which middleware and handler to be called
+in this case it will call the auth, and validate middlewate and after that the createTemplate handler.
 
 Slide 16
 Now, for the handler folder aside from the handler files, we also have the helpers and middlewares subfolder, the helpers
